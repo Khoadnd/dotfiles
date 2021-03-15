@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/khoa/scripts/switchinput'
+let g:netrw_dirhist_0='/home/khoa/Desktop/BaiTap/OOp'
+let g:netrw_dirhist_9='/home/khoa/Desktop/BaiTap'
+let g:netrw_dirhist_8='/home/khoa/Desktop/BaiTap/OOp'
+let g:netrw_dirhist_7='/home/khoa/Desktop/BaiTap'
+let g:netrw_dirhist_6='/home/khoa/Desktop/BaiTap/OOp'
+let g:netrw_dirhist_5='/home/khoa/Desktop/BaiTap'
+let g:netrw_dirhist_4='/home/khoa/Desktop'
+let g:netrw_dirhist_3='/home/khoa/Desktop/BaiTap/OOp'
+let g:netrw_dirhist_2='/home/khoa/Desktop/BaiTap'

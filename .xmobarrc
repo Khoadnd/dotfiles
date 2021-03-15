@@ -1,0 +1,86 @@
+-- Thanks to krive001 to share the code of xmobar
+-- https://github.com/krive001/xmonad-xmobar
+
+Config {
+    font = "xft:Noto Sans LGC:size=11:style=bold",
+    additionalFonts = ["xft:Noto Sans:size=10:style=Bold","xft:FontAwesome:style=Regular:size=13"]
+   , bgColor          = "#2F343F"
+   , fgColor          = "white"
+   , position         = TopSize C 100 30
+   , textOffset       = -1
+   , iconOffset       = -8
+   , alpha            = 255
+   , border           = BottomB
+   , borderWidth      = 0
+   , borderColor      = "#c0c5ce"
+   , lowerOnStart     = True
+   , hideOnStart      = False
+   , allDesktops      = True
+   , overrideRedirect = True
+   , pickBroadest     = True
+   , persistent       = True
+   , sepChar          = "%"
+   , alignSep         = "}{"
+   , template         = "<fc=white><fn=2><action=button=4><action=button=5>%UnsafeStdinReader%</action></action></fn></fc>}{%battery% | <action=`gsimplecal` button=1>%date%</action> | <action=`evolution` button=1><fn=2> </fn>%engine%</action> | <fc=white><action=`networkmanager_dmenu` button=1>%wlp3s0wi%</action></fc> | <fc=white> %update%</fc> | %watt%W %multicpu%  <fc=white><action=`feh /home/khoa/Pictures/TKB.png` button=1><fn=2>  </fn>%cputemp% °C </action></fc> <fn=2></fn> %rpm% rpm %memory% | <action=`pavucontrol` button=3><action=`XMMute` button=1><action=`blueberry` button=2><action=button=5>%XVol% </action></action></action></action>"
+   , commands         =
+      [ Run MultiCpu                            [ "--template" , "<fc=white><fn=2>  </fn></fc><fc=white></fc><total> %"
+                                                , "--Low"      , "50"        -- units: %
+                                                , "--High"     , "85"        -- units: %
+                                                , "--low"      , "#ffffff"
+                                                , "--normal"   , "#ffffff"
+                                                , "--high"     , "#fd0537"
+                                                ] 10
+
+      , Run CoreTemp                            [ "--template" , "<fc=white><fn=2>  </fn></fc><fc=green></fc><core0> °C"
+                                                , "--Low"      , "2"         -- units: °C
+                                                , "--High"     , "80"        -- units: °C
+                                                , "--low"      , "#ffffff"
+                                                , "--normal"   , "#ffffff"
+                                                , "--high"     , "#fd0537"
+                                                ] 50
+
+      , Run Memory                              [ "--template" ,"<fc=white><fn=2> </fn></fc><fc=white></fc><usedratio> %"
+                                                ] 10
+
+
+
+      , Run Wireless           "wlp3s0"        ["-t", "<fc=white><fn=2> </fn></fc><ssid>"
+                                                ] 10
+
+      , Run Com "/bin/bash" ["-c", "XMgetvolume"]  "XVol" 10
+
+
+      , Run Kbd                                [ ("be" , "<fc=#FFFFFF>BE</fc>")
+                                                , ("us" , "<fc=#FFFFFF>US</fc>")]
+
+      , Run UnsafeStdinReader
+
+	   , Run Com "/bin/bash" ["-c",  "XMKupdate"] "update" 600
+
+      , Run Date                                "%A, %d-%m-%Y %H:%M" "date" 60
+
+      , Run Battery        [ "--template" , "<fn=2> </fn><acstatus>"
+                             , "--Low"      , "15"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "white"
+                             , "--normal"   , "white"
+                             , "--high"     , "white"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"   , "<fn=2></fn> <left>% (<timeleft>)"
+                                       -- AC "on" status
+                                       , "-O"   , "<fc=#ffffff>Charging <left>%</fc>"
+                                       -- charged status
+                                       , "-i"   , "<fc=#ffffff>Charged <left>%</fc>"
+                             ] 50
+      , Run Com "cut" ["-c", "1-2", "/sys/class/hwmon/hwmon4/temp1_input"] "cputemp" 10
+
+      , Run Com "cat" ["/sys/class/hwmon/hwmon4/fan1_input"] "rpm" 10
+
+      , Run Com "/home/khoa/scripts/getPower/getvalue.sh" [""] "watt" 10
+
+      , Run Com "cat" ["/home/khoa/scripts/switchinput/ENGINE"] "engine" 10
+   ]
+
+}

@@ -1,0 +1,17 @@
+clion
+dust
+foxitreader
+gpointing-device-settings
+grex
+ibus-bamboo
+imgcat
+intellij-idea-ultimate-edition
+neovim-plug
+networkmanager-dmenu-git
+picom-jonaburg-git
+shell-color-scripts
+tlpui
+vim-plug
+vmware-workstation
+ytop-bin
+zenmonitor

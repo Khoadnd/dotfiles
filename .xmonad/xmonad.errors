@@ -1,0 +1,33 @@
+
+xmonad.hs:132:5: warning: [-Wmissing-fields]
+    • Fields of ‘XPC’ not initialised: changeModeKey, searchPredicate,
+                                       defaultPrompter, sorter
+    • In the expression:
+        XPC
+          {font = "xft:Noto Sans:size=10:style=Bold", bgColor = "#000000",
+           fgColor = "#DDDDDD", bgHLight = "#333333", fgHLight = "#FFFFFF",
+           borderColor = "#FFFFFF", promptBorderWidth = 0, position = Bottom,
+           height = 30, alwaysHighlight = True, maxComplRows = Nothing,
+           historySize = 256, defaultText = "", autoComplete = Nothing,
+           historyFilter = id, showCompletionOnTab = False,
+           promptKeymap = defaultXPKeymap, completionKey = (0, xK_Tab)}
+      In an equation for ‘myXPConfig’:
+          myXPConfig
+            = XPC
+                {font = "xft:Noto Sans:size=10:style=Bold", bgColor = "#000000",
+                 fgColor = "#DDDDDD", bgHLight = "#333333", fgHLight = "#FFFFFF",
+                 borderColor = "#FFFFFF", promptBorderWidth = 0, position = Bottom,
+                 height = 30, alwaysHighlight = True, maxComplRows = Nothing,
+                 historySize = 256, defaultText = "", autoComplete = Nothing,
+                 historyFilter = id, showCompletionOnTab = False,
+                 promptKeymap = defaultXPKeymap, completionKey = (0, xK_Tab)}
+    |
+132 |     XPC { font              = "xft:Noto Sans:size=10:style=Bold"
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+xmonad.hs:462:1: warning: [-Wtabs]
+    Tab character found here.
+    Please use spaces instead.
+    |
+462 |            "Spacing Tabbed Simplest"      -> "<fn=1>Tabbed</fn>"
+    | ^^^^^^^^
