@@ -1,0 +1,11 @@
+[Unit]
+Description=Fix systemd-backlight@.service restore brightness
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/khoa/scripts/fix-brightness/fix-brightness.sh
+
+[Install]
+WantedBy=multi-user.target
+
